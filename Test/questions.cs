@@ -8,7 +8,7 @@ namespace Test
 {
     internal abstract class questions
     {
-        public abstract string Descrizione();
+        private string Descrizione;
         public abstract int Punteggio();
     }
 }
