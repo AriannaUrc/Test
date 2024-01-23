@@ -53,12 +53,9 @@ namespace Test
         public override int Punteggio(List<Componente> risposteUtente)
         {
             int punteggio = 0;
-            for (int i = 0; i < risposte.Count; i++)
+            if (risposte[0].Testo == risposteUtente[0].Testo)
             {
-                if (risposte[i].Testo == risposteUtente[i].Testo)
-                {
-                    punteggio++;
-                }
+                punteggio = risposte[0].Punteggio(risposteUtente);
             }
 
             return punteggio;

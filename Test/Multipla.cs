@@ -64,7 +64,7 @@ namespace Test
             {
                 if (risposte[i].Testo == risposteUtente[i].Testo)
                 {
-                    punteggio++;
+                    punteggio += risposte[i].Punteggio(risposteUtente);
                 }
             }
 
