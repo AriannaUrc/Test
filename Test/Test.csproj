@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domanda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="questions.cs" />
+    <Compile Include="Componente.cs" />
     <Compile Include="VeroFalso.cs" />
   </ItemGroup>
   <ItemGroup>
