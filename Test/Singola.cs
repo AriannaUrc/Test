@@ -9,6 +9,12 @@ namespace Test
 {
     internal class Singola : Domanda
     {
+        public Singola(Componente risposta, string testo)
+        {
+            risposte.Add(risposta);
+            Testo = testo;
+        }
+
         public override string ToString(object obj)
         {
             return Testo + "\nRisposta: " + risposte[0].Testo;

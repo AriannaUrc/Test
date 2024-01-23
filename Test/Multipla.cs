@@ -9,6 +9,11 @@ namespace Test
 {
     internal class Multipla : Domanda
     {
+        public Multipla(List<Componente> risposte, string testo)
+        {
+            this.risposte = risposte;
+            Testo = testo;
+        }
         public override string ToString(object obj)
         {
             string risp = "";

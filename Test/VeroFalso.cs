@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,11 @@ namespace Test
 {
     internal class VeroFalso : Domanda
     {
+        public VeroFalso(List<Componente> risposte, string testo)
+        {
+            this.risposte = risposte;
+            Testo = testo;
+        }
         public override string ToString(object obj)
         {
             string risp = "";
