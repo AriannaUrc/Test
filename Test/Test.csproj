@@ -50,6 +50,7 @@
     <Compile Include="Multipla.cs" />
     <Compile Include="Risposta.cs" />
     <Compile Include="Singola.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="VeroFalso.cs" />
   </ItemGroup>
   <ItemGroup>

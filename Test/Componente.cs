@@ -9,6 +9,8 @@ namespace Test
 {
     internal abstract class Componente
     {
+        public List<Componente> risposte;
+
         private string _testo;
         public string Testo
         {

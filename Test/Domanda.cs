@@ -8,9 +8,6 @@ namespace Test
 {
     internal abstract class Domanda : Componente
     {
-        public List<Componente> risposte;
-
-
         public override void Add(object obj)
         {
             risposte.Add((obj as Componente));

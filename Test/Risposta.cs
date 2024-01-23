@@ -15,6 +15,12 @@ namespace Test
             set { if (value > 0) { _peso = value; } else { _peso = 0; } }
         }
 
+        public Risposta(int peso, string testo)
+        {
+            Peso = peso;
+            Testo = testo;
+        }
+
         public override void Add(object obj)
         {
             throw new NotImplementedException();
@@ -48,7 +54,7 @@ namespace Test
         {
             return Testo.GetHashCode();
         }
-        public override int Punteggio(List<Componente> risposteUtente)
+        public override int Punteggio(List<Componente> risposteUtente = null)
         {
             return Peso;
         }

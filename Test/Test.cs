@@ -3,40 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Test
 {
-    internal class Multipla : Domanda
+    internal class Test : Componente
     {
-        public Multipla(List<Componente> risposte, string testo)
+        public override void Add(object obj)
         {
-            this.risposte = risposte;
-            Testo = testo;
+            risposte.Add((obj as Componente));
+        }
+        public override object GetChild(int index)
+        {
+            return risposte[index];
+        }
+        public override void Remove(int index)
+        {
+            risposte.RemoveAt(index);
         }
         public override string ToString(object obj)
         {
             string risp = "";
             for (int i = 0; i < risposte.Count; i++)
             {
-                risp += risposte[i].Testo + "; ";
+                risp += risposte.ToString() + "\n";
             }
-            return Testo + "\nRisposta: " + risp;
+            return Testo + "\n\nDomande: \n" + risp;
         }
-
         public override bool Equals(object obj)
         {
-            return Equals(obj as Multipla);
+            return Equals(obj as Test);
         }
 
-        public bool Equals(Multipla other)
+        public bool Equals(Test other)
         {
             bool uguale = true;
             if (risposte.Count == other.risposte.Count)
             {
                 for (int i = 0; i < risposte.Count; i++)
                 {
-                    if (!(risposte[i].Testo == other.risposte[i].Testo))
+                    if (!(risposte[i].Equals(other.risposte[i])))
                     {
                         uguale = false;
                     }
@@ -51,24 +56,17 @@ namespace Test
                    uguale &&
                    Testo == other.Testo;
         }
-
         public override int GetHashCode()
         {
-            return risposte.GetHashCode() + Testo.GetHashCode();
+            return risposte.GetHashCode();
         }
 
-        public override int Punteggio(List<Componente> risposteUtente)
+        public override int Punteggio(List<Componente> risposteUtente = null)
         {
             int punteggio = 0;
             for (int i = 0; i < risposte.Count; i++)
             {
-                for (int j = 0; j < risposteUtente.Count; j++)
-                {
-                    if (risposte[i].Testo == risposteUtente[j].Testo)
-                    {
-                        punteggio += risposte[i].Punteggio(risposteUtente);
-                    }
-                }
+                punteggio += risposte[i].Punteggio(risposteUtente);
             }
 
             return punteggio;
