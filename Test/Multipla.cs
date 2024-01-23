@@ -7,26 +7,34 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Test
 {
-    internal class Singola : Domanda
+    internal class Multipla : Domanda
     {
         public override string ToString(object obj)
         {
-            return Testo + "\nRisposta: " + risposte[0].Testo;
+            string risp = "";
+            for (int i = 0; i < risposte.Count; i++)
+            {
+                risp += risposte[i].Testo + "; ";
+            }
+            return Testo + "\nRisposta: " + risp;
         }
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as Singola);
+            return Equals(obj as Multipla);
         }
 
-        public bool Equals(Singola other)
+        public bool Equals(Multipla other)
         {
             bool uguale = true;
             if (risposte.Count == other.risposte.Count)
             {
-                if (!(risposte[0].Testo == other.risposte[0].Testo))
+                for (int i = 0; i < risposte.Count; i++)
                 {
-                    uguale = false;
+                    if (!(risposte[i].Testo == other.risposte[i].Testo))
+                    {
+                        uguale = false;
+                    }
                 }
             }
             else

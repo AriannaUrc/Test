@@ -10,7 +10,12 @@ namespace Test
     {
         public override string ToString(object obj)
         {
-            return Testo + "\nRisposta: " + risposte[0].Testo;
+            string risp = "";
+            for (int i = 0; i < risposte.Count; i++)
+            {
+                risp += risposte[i].Testo + "; ";
+            }
+            return Testo + "\nRisposta: " + risp;
         }
         public override bool Equals(object obj)
         {
@@ -19,14 +24,31 @@ namespace Test
 
         public bool Equals(VeroFalso other)
         {
+            bool uguale = true;
+            if(risposte.Count == other.risposte.Count)
+            {
+                for (int i = 0; i < risposte.Count; i++)
+                {
+                    if (!(risposte[i].Testo == other.risposte[i].Testo))
+                    {
+                        uguale = false;
+                    }
+                }
+            }
+            else
+            {
+                uguale = false;
+            }
+            
+
             return other != null &&
-                   risposte[0].Testo == other.risposte[0].Testo &&
+                   uguale &&
                    Testo == other.Testo;
         }
 
         public override int GetHashCode()
         {
-            return risposte.GetHashCode();
+            return risposte.GetHashCode() + Testo.GetHashCode();
         }
         public override int Punteggio(List<Componente> risposteUtente)
         {
