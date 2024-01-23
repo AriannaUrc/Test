@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    internal class Domanda : Componente
+    internal abstract class Domanda : Componente
     {
-        List<Componente> risposte;
+        public List<Componente> risposte;
+
+
         public override void Add(object obj)
         {
             risposte.Add((obj as Componente));
@@ -21,29 +23,10 @@ namespace Test
         {
             risposte.RemoveAt(index);
         }
-        public override string ToString(object obj)
-        {
-            return risposte.ToString();
-        }
-        public override bool Equals(object obj)
-        {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
-            {
-                return false;
-            }
-            else
-            {
-                return (ToString() == obj.ToString());
-            }
-        }
+        public abstract override string ToString(object obj);
+        public abstract override bool Equals(object obj);
 
-        public override int GetHashCode()
-        {
-            return risposte.GetHashCode();
-        }
-        public override int Punteggio()
-        {
-            return 0;
-        }
+        public abstract override int GetHashCode();
+        public abstract override int Punteggio(List<Componente> risposteUtente);
     }
 }
